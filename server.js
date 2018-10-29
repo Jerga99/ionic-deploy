@@ -17,7 +17,17 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.resolve(__dirname, "www")));
+// app.use(express.static(path.resolve(__dirname, "www")));
+
+
+const appPath = path.resolve(__dirname, "www");
+app.use(express.static(appPath));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(appPath, 'index.html'));
+});
+
+
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
