@@ -17,10 +17,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// app.use(express.static(path.resolve(__dirname, "www")));
 
-
-const appPath = path.resolve(__dirname, "www");
+const appPath = path.join(__dirname, "platforms", "browser", "www");
 app.use(express.static(appPath));
 
 app.get('*', function(req, res) {
